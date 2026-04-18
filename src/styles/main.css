@@ -1,0 +1,161 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(https://w.wallhaven.cc/full/y8/wallhaven-y8lzql.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    user-select: none;
+}
+
+
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(325deg,
+    #03001e 0%,
+    #c00303 30%,
+    #680202 70%,
+    #c00303 100%);
+    padding: 40px 60px;
+}
+
+h3{
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 1.5em;
+    font-family: monospace;
+}
+
+#tentativas {
+    color: #ffff00;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.reset{
+    padding: 15px 20px;
+    width: 100%;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    transition:all 0.3s ease;
+    border:2px solid transparent;
+}
+
+.reset:hover{
+    color: #fff;
+    background-color: #000;
+    border-color: #ff0055;
+    box-shadow:0 0 10px #ff0055, 0 0 40px #ff0055, 0 0 80px #ff0055;
+    text-shadow: 0 0 10px #fff;
+    transform: translateY(-5px);
+}
+
+.reset::active{
+    transform: translateY(0)
+}
+
+.reset:focus{
+    color: #ec38bc;
+    background-color: #262809;
+}
+
+.game{
+    width: 100%;
+    max-width: 430px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item{
+    position: relative;
+    width: calc(25% - 10px);
+    aspect-ratio: 1/1;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    font-size: clamp(1.5em, 8vw, 3em);
+    transform: rotateY(180deg);
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen{
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after, .boxMatrch::after {
+    transform: rotateY(180deg);
+}
+
+.vitoria-animada{
+    animation: pulsar 0.6s infinite alternate;
+    color: #ffff00 in !important;
+    transform: scale(1.1);
+}
+
+@keyframes pulsar{
+    from { transform: scale(1); text-shadow: 0 0 10px #fff; }
+    to { transform: scale(1.1); text-shadow: 0 0 30px #ffff00;}
+}
+
+@media (max-width: 480px){
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+    .reset {
+        font-size: 1.2em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .game {
+        max-width: 380px;
+    }
+}
