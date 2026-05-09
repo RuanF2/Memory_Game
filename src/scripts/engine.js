@@ -25,19 +25,25 @@ let shuffleEmojis = emojis.sort(() =>(Math.random() > 0.5 ? 2 : -1));
 for(let i=0; i < emojis.length; i++){
     let box = document.createElement
     ("div");
-    box.className = "item";
+    box.className = "item boxOpen";
     box.innerHTML = shuffleEmojis[i];
     box.onclick = handleClick;
     document.querySelector(".game").appendChild(box);
 }
 
+setTimeout(() => {
+   document.querySelectorAll(".item").forEach(card => {
+    card.classList.remove("boxOpen")
+   })
+}, 700)
+
 function handleClick(){
-    if(openCards.length < 2){
+    if(openCards.length < 2 && !this.classList.contains("boxOpen") && !this.classList.contains("boxMatch")){
         this.classList.add("boxOpen");
         openCards.push(this);
     }
 
-    if(openCards.length ==2){
+    if(openCards.length === 2){
         setTimeout(checkMatch, 500);
     }
 }
