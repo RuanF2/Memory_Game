@@ -35,7 +35,7 @@ setTimeout(() => {
    document.querySelectorAll(".item").forEach(card => {
     card.classList.remove("boxOpen")
    })
-}, 1000)
+}, 1500)
 
 function handleClick(){
     if(openCards.length < 2 && !this.classList.contains("boxOpen") && !this.classList.contains("boxMatch")){
